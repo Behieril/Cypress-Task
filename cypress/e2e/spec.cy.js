@@ -1,0 +1,205 @@
+import {MainPage} from "./pages/MainPage.js" 
+import {RegistrationPage} from "./pages/RegistrationPage.js"
+import {LogIn} from "./pages/Loginpage.js"
+import {ForgotPassword} from "./pages/ForgotPasswordPage.js"
+import {SupportCenter} from "./pages/SupportCentrePage.js"
+import {Network} from "./pages/NetworkPage.js"
+
+const mainpage = new MainPage()
+const registrationage = new RegistrationPage()
+const login = new LogIn()
+const forgotpassword = new ForgotPassword()
+const supportcenter = new SupportCenter()
+const network = new Network()
+
+describe('LogIn/Out test', () => {
+  beforeEach(() => {
+    cy.visit('https://telnyx.com/')
+  })
+
+  it('Registration test', () => {
+    mainpage.CookiesSkip()
+    mainpage.SignUp()
+    registrationage.EnterEmail()
+    registrationage.EnterFullName("Dalasfhdl")
+    registrationage.EnterPassword("aAskfhyuggufvgkjnxli_22")
+    registrationage.AgreeCheckClick()
+    registrationage.CreateAccountButtonClick()
+  })
+
+  it('Registration test through main page field', () => {
+    mainpage.EmailField()
+    mainpage.TryForFreeButtonClick()
+    registrationage.EnterFullName("Dalasfhdl")
+    registrationage.EnterPassword("aAskfhyuggufvgkjnxli_22")
+    registrationage.AgreeCheckClick()
+    registrationage.CreateAccountButtonClick()
+  })
+
+  it('Log In test', () => {
+    mainpage.LogInButtonClick()
+    login.EmailField("roman.bobokov@gmail.com")
+    login.PasswordField('rp%-afu#2-9GmgE')
+    login.SubmitButtonClick()
+  });
+
+  it('Forgot password system test', () => {
+    mainpage.LogInButtonClick()
+    login.ForgotPasswordButton()
+    forgotpassword.EmailInput("roman.bobokov@gmail.com")
+    forgotpassword.ResetButtonClick()
+    expect(".Message__MessageContent-gQIxgg").to.exist
+  });
+})
+describe('Support Center test', () => {
+  beforeEach(() => {
+    cy.visit('https://telnyx.com/')
+  })
+
+  it('Article links test', () => {
+    mainpage.SupportCenterLink()
+    supportcenter.GettingStarted()
+    supportcenter.BackToMain()
+    supportcenter.ConfigurationGuides()
+    supportcenter.BackToMain()
+    supportcenter.MessagingArticlesandGuides()
+    supportcenter.BackToMain()
+    supportcenter.VoiceandFax()
+    supportcenter.BackToMain()
+    supportcenter.PortingArticlesandGuides()
+    supportcenter.BackToMain()
+    supportcenter.BilingPricing()
+    supportcenter.BackToMain()
+    supportcenter.Programmableireless()
+    supportcenter.BackToMain()
+    supportcenter.ToursandVideos()
+    supportcenter.BackToMain()
+    supportcenter.FAQsaboutTelnyx()
+    supportcenter.BackToMain()
+    supportcenter.InternationalDIDRequirements()
+    supportcenter.BackToMain()
+    supportcenter.BulkEditNumbers()
+    supportcenter.BackToMain()
+    supportcenter.ReportingArticlesAndGuides()
+    supportcenter.BackToMain()
+    supportcenter.EverethingSIP()
+    supportcenter.BackToMain()
+    supportcenter.ProgrammableApplications()
+    supportcenter.BackToMain()
+    supportcenter.ReferenceMaterial()
+  });
+  it('Support center search test', () => {
+    mainpage.SupportCenterLink()
+    supportcenter.GettingStarted()
+    supportcenter.SearchField("Link{enter}")
+    supportcenter.FirstSearchResult()
+    supportcenter.SearchField("User{enter}")
+    supportcenter.FirstSearchResult()
+    supportcenter.SearchField("Test{enter}")
+    supportcenter.FirstSearchResult()
+  });
+});
+
+  describe('Main page links tests', () => {
+    beforeEach(() => {
+      cy.visit('https://telnyx.com/')
+    })
+  
+    it('Footer links test', () => {
+      mainpage.Footer()
+      cy.wait(1000)
+      mainpage.Elastic()
+      cy.wait(1000)
+      mainpage.CallControll()
+      cy.wait(1000)
+      mainpage.ProgrammableSMS()
+      cy.wait(1000)
+      mainpage.WhatsAppAPI()
+      cy.wait(1000)
+      mainpage.SecureFaxing()
+      cy.wait(1000)
+      mainpage.WirelessCellularIoT()
+      cy.wait(1000)
+      mainpage.NumberLookup()
+      cy.wait(1000)
+      mainpage.GlobalNumbers()
+      cy.wait(1000)
+      mainpage.VerifyAPI()
+      cy.wait(1000)
+      mainpage.SeeAllProducts()
+      cy.wait(1000)
+      mainpage.Blog()
+      cy.wait(1000)
+      mainpage.ResourceHub()
+      cy.wait(1000)
+      mainpage.ReleaseNotes()
+      cy.wait(1000)
+      mainpage.ElasticSIP()
+      cy.wait(1000)
+      mainpage.SMSAPI()
+      cy.wait(1000)
+      mainpage.VoiceAPI()
+      cy.wait(1000)
+      mainpage.WirelessPricing()
+      cy.wait(1000)
+      mainpage.AboutUs()
+      cy.wait(1000)
+      mainpage.Careers()
+      cy.wait(1000)
+      mainpage.AcceptableUsePolicy()
+    })
+    it('Product links test', () => {
+      mainpage.MessagingAPI()
+      cy.intercept('https://telnyx.com/products/sms-api')
+      cy.wait(1000)
+      mainpage.MainPageButton()
+      mainpage.VideoAPI()
+      cy.intercept('https://telnyx.com/products/video-api')
+      cy.wait(1000)
+      mainpage.MainPageButton()
+      mainpage.Wireless()
+      cy.intercept('https://telnyx.com/products/iot-sim-card')
+      cy.wait(1000)
+      mainpage.MainPageButton()
+      mainpage.VoiceAPIlink()
+      cy.intercept('https://telnyx.com/products/voice-api')
+      cy.wait(1000)
+      mainpage.MainPageButton()
+      mainpage.ElasticSIPTrunking()
+      cy.intercept('https://telnyx.com/products/sip-trunks')
+      cy.wait(1000)
+      mainpage.MainPageButton()
+      mainpage.Storage()
+      cy.intercept('https://telnyx.com/products/storage')
+    });
+    it('Side Panel links test', () => {
+      mainpage.SideBarButton()
+      mainpage.Solutions()
+      cy.get('.sc-6ef4e600-19').should('be.visible')
+      mainpage.BackButton()
+      mainpage.Resources()
+      cy.get('.sc-6ef4e600-19').should('be.visible')
+      mainpage.BackButton()
+      mainpage.Company()
+      cy.get('.sc-6ef4e600-19').should('be.visible')
+      mainpage.BackButton()
+      mainpage.Pricing()
+      cy.get('.sc-6ef4e600-19').should('be.visible')
+      mainpage.BackButton()
+      mainpage.Network()
+    });
+    it('Network page test', () => {
+      mainpage.SideBarButton()
+      mainpage.Network()
+      cy.intercept('https://telnyx.com/solutions/global-ip-network')
+      network.ScrollToTab()
+      cy.get('#content-5qKqtUbJNN3vVehx6JvATL > .sc-5c7b8005-4 > .sc-5c7b8005-5 > .sc-b5e72f6c-0 > div > img').should('be.visible')
+      network.CompetitorNetworks1()
+      cy.get('#content-2IXQpgM9HStNH0WnUUiWCw > .sc-5c7b8005-4 > .sc-5c7b8005-5 > .sc-b5e72f6c-0 > div > img').should('be.visible')
+      network.ScrollToTab1()
+      cy.get('#content-Sq8ENgsX3FFJrQ1xYXJAa > .sc-5c7b8005-4 > .sc-5c7b8005-5 > .sc-b5e72f6c-0 > div > picture > img').should('be.visible')
+      network.CompetitorNetworks2()
+      cy.get('#content-4azmFSNfuMMzXK062TEcHx > .sc-5c7b8005-4 > .sc-5c7b8005-5 > .sc-b5e72f6c-0 > div > picture > img').should('be.visible')
+      network.PricingLinkButton()
+    });
+  })
