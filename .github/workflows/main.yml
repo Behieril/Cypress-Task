@@ -9,8 +9,8 @@ jobs:
       - uses: actions/checkout@v3
       - uses: cypress-io/github-action@v4
         with:
-          build: npm run build
-          start: npm start
+          build: npm cypress run build
+          start: npm cypress start
           browser: chrome
  
 
